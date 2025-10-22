@@ -10,4 +10,5 @@ A free web-based scientific calculator with:
 - Permutation (nPr) and Combination (nCr)
 
 Project by NAVEEN KUMAR P  
+EEE (I YEAR)
 ANNA UNIVERSITY BIT CAMPUS TRICHY
