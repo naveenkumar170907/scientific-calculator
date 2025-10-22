@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scientific Calculator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="calculator">
+<h2>Scientific Calculator</h2>
+
+<input type="number" id="num1" placeholder="Number 1">
+<input type="number" id="num2" placeholder="Number 2 (optional)">
+
+<select id="operation">
+    <option value="add">Add (+)</option>
+    <option value="sub">Subtract (-)</option>
+    <option value="mul">Multiply (*)</option>
+    <option value="div">Divide (/)</option>
+    <option value="mod">Modulus (%)</option>
+    <option value="pow">Power (x^y)</option>
+    <option value="sqrt">Square Root</option>
+    <option value="fact">Factorial</option>
+    <option value="sin">Sine</option>
+    <option value="cos">Cosine</option>
+    <option value="tan">Tangent</option>
+    <option value="csc">Cosecant</option>
+    <option value="sec">Secant</option>
+    <option value="cot">Cotangent</option>
+    <option value="log10">Log10</option>
+    <option value="ln">Natural Log (ln)</option>
+    <option value="abs">Absolute</option>
+    <option value="ceil">Ceiling</option>
+    <option value="floor">Floor</option>
+    <option value="npr">Permutation (nPr)</option>
+    <option value="ncr">Combination (nCr)</option>
+</select>
+
+<button onclick="calculate()">Calculate</button>
+<div id="result"></div>
+</div>
+
+<footer>
+Project by<br>
+NAVEEN KUMAR P<br>
+ANNA UNIVERSITY BIT CAMPUS TRICHY
+</footer>
+
+<script>
+function factorial(n){ if(n<0) return NaN; let f=1; for(let i=1;i<=n;i++) f*=i; return f; }
+function permutation(n,r){ if(r>n) return NaN; return factorial(n)/factorial(n-r); }
+function combination(n,r){ if(r>n) return NaN; return factorial(n)/(factorial(r)*factorial(n-r)); }
+
+function calculate(){
+    let a=parseFloat(document.getElementById("num1").value);
+    let b=parseFloat(document.getElementById("num2").value);
+    let op=document.getElementById("operation").value;
+    let res;
+
+    switch(op){
+        case "add": res=a+b; break;
+        case "sub": res=a-b; break;
+        case "mul": res=a*b; break;
+        case "div": res=b!=0?a/b:"Error: Div by 0"; break;
+        case "mod": res=b!=0?a%b:"Error: Div by 0"; break;
+        case "pow": res=Math.pow(a,b); break;
+        case "sqrt": res=a>=0?Math.sqrt(a):"Error: Negative"; break;
+        case "fact": res=factorial(a); break;
+        case "sin": res=Math.sin(a*Math.PI/180); break;
+        case "cos": res=Math.cos(a*Math.PI/180); break;
+        case "tan": res=Math.tan(a*Math.PI/180); break;
+        case "csc": res=Math.sin(a*Math.PI/180)!=0?1/Math.sin(a*Math.PI/180):"Error"; break;
+        case "sec": res=Math.cos(a*Math.PI/180)!=0?1/Math.cos(a*Math.PI/180):"Error"; break;
+        case "cot": res=Math.tan(a*Math.PI/180)!=0?1/Math.tan(a*Math.PI/180):"Error"; break;
+        case "log10": res=a>0?Math.log10(a):"Error"; break;
+        case "ln": res=a>0?Math.log(a):"Error"; break;
+        case "abs": res=Math.abs(a); break;
+        case "ceil": res=Math.ceil(a); break;
+        case "floor": res=Math.floor(a); break;
+        case "npr": res=permutation(a,b); break;
+        case "ncr": res=combination(a,b); break;
+    }
+    document.getElementById("result").innerText="Result: "+res;
+}
+</script>
+</body>
+</html>
